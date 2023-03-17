@@ -1,0 +1,112 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+
+\usepackage[spanish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{natbib}
+
+\title{Predicción de Activos financieros en función de los pasivos más relevantes de la institución financiera Banregio Grupo Financiero I.B.M, mediante regresión lineal}
+
+\author{Cristóbal Salinas \\ 
+        Facultad de Ciencias Físico-Matemáticas, \\Universidad Autónoma de Nuevo León, \\San Nicolás de los Garza, Nuevo León}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+
+En la presente investigación se busca predecir de la institución financiera Banregio Grupo Financiero I.B.M., los activos que se generan cada mes en función de los depósitos de los clientes y préstamos interbancarios, complementando también con el número de sucursales, número de tarjetas de crédito y número de cajeros. \\
+
+El modelo seleccionado para el análisis fue de regresión para ajustar una curva a los datos minimizando el error y se hizo una predicción para el mes de enero 2022.
+
+\textit{Palabras clave: Activo, vista, plazo, préstamos interbancarios, regresión líneal.}
+
+\end{abstract}
+
+\section{Introduction}
+
+En el tema de Finanzas, se tiene la fórmula donde los activos son iguales a los pasivos más capital contable, nos enfocaremos los pasivos en particular los depósitos a la vista y plazo de los clientes y prestamos interbancarios por ser los rubros de mayor relevancia para Banregio y en particular, para las bancas comerciales como lo son los bancos tradicionales que conocemos como Afirme, Banorte, BBVA, entre otros, ya que con estos depósitos se pueden hacer préstamos a clientes o inversiones a plazo que generen intereses a favor del banco y puedan generar más activos.
+\\
+\\
+Los activos también varían en función de la cantidad de sucursales, tarjetas de crédito y cajeros automáticos, ya que con estos se puede tener una mayor atracción de clientes que depósiten sus ahorros en el banco de su preferencia.
+\\
+\\
+Por definición, los activos siempre deben ser mayores que los pasivos para evitar problemas de liquidez del banco y evitar afectar tanto a los clientes como al sistema financiero y economico del país, como menciona \citet{mu2021}, la banca pública y privada, como medida precautoria, tendrá que ocupar los montos de sus activos líquidos (fondos disponibles e inversiones) para hacer frente a sus pasivos.
+\\
+\\
+Según \citet{san12} Las investigaciones en la predicción de valores futuros de activos financieros, han venido desarrollandose en base a comportamientos anteriores de los mismos casos de estudio, usandose herramientas estadísticas, obteniendose resultados muy útiles en la mayoría de los casos.
+
+
+
+\subsection{Objetivo}
+
+Predecir los activos de Banregio con la mayor precisión posible de acuerdo a la información observada de la parte pasiva relevante que son los depósitos a la vista, depósitos a plazo, préstamos interbancarios en complemento con las tarjetas de crédito, sucursales y cajeros.
+
+
+\section{Literatura relacionada}
+
+\section{Marco teórico}
+
+\section{Metodología}
+
+Se utilizó el modelo DBSCAN a los datos ya que este el algoritmo trabaja con datos con formas extrañas, además, por ser no supervisado, da un poco más de flexibilidad de elegir los parámetros iniciales, los cuales podrían definirse por ejemplo, min sample = 3 por ser datos financieros, Banxico y la CNBV piden información trimestral y eps dependerá de la estrategia de negocio. En este caso, Banregio se concentra en personas físicas, personas físicas con actividad empresarial y MyPYMES, por lo que se podría decir que un eps de 0.275 MDP es una buena aproximación de acuerdo a los estados financieros. 
+
+\\
+
+Para confirmar el mínimo de observaciones para formar un cluster es de tres, se aplico el método del codo, calculando la distancia entre cada punto y la recta del del punto inicial al punto final, tomando como criterio la primer distancia mayor.
+
+
+\section{Resultados}
+
+La siguiente figura muestra el uso del método de codo para selección de número de grupos.
+\\
+\begin{figure}
+    \centering
+    \includegraphics[width=1\textwidth]{figs/codo.pdf}
+    \caption{Selección de número de grupos}
+    \label{fig:Método de codo}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\textwidth]{figs/dbscan.pdf}
+    \caption{Selección de número de grupos}
+    \label{fig:Método de codo}
+\end{figure}
+
+\\
+\\
+
+Se observa que la primer mayor distancia es de 165.69, por lo tanto, se confirma que el número de grupos adecuados es 3 como se sospechaba de un inicio por la medición trimestral que señala la regulación bancaria al revelar información en esa periodicidad.
+\\
+\\
+En la figura 2 se puede ver el agrupamiento de los 3 cluster, considerando el eje y como activos en función del eje x como la suma del resto de las variables.
+\\
+\\
+A pesar de que se forman los 3 grupos, se esperaba que estos tuvieran aproximadamente la misma cantidad de puntos, ya que, se tiene cierta estacionalidad cada trimestre por el tipo de clientes que tienen la misma caracteristica entre sí para poder tener una mayor certeza en su comportamiento de los depósitos, pero no fue así.
+
+\section{Discusión}
+
+
+\section{Conclusiones}
+DBSCAN no es un buen método para agrupar los datos de este estudio ya que se tienen factores que no necesariamente se tienen que tratar con este modelo, en el caso del método de codo, cla cantidad de grupos arrojada es adecuada ya que es un dato que se tiene que cumplir por ser regulatorio.
+
+\section{Trabajo a futuro}
+Aplicar otros métodos para encontrar mejores predicciones y un adecuado tratamiento de los datos.
+
+\bibliographystyle{unsrtnat}
+\bibliography{biblio}
+
+\end{document}
+
+\section{Discusión}
+
+\section{Conclusiones}
+
+\section{Trabajo a futuro}
+
+\bibliographystyle{unsrtnat}
+\bibliography{biblio}
